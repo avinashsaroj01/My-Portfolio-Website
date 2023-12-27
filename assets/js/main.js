@@ -48,6 +48,7 @@ document.addEventListener("DOMContentLoaded", function () {
     contactForm.addEventListener("submit", function (event) {
         event.preventDefault();
 
+
         // Replace the following placeholders with your actual values
         const emailJsUserId = "k8gDO4DcnhhOxgoyL";
         const emailServiceId = "service_gms0bfe";
@@ -56,7 +57,7 @@ document.addEventListener("DOMContentLoaded", function () {
         // Prepare the data to be sent to EmailJS
         const formData = new FormData(contactForm);
         const data = {};
-        
+
         formData.forEach((value, key) => {
             data[`user_${key}`] = value; // Prefix keys with 'user_' to match placeholders
         });
@@ -71,7 +72,26 @@ document.addEventListener("DOMContentLoaded", function () {
             }, function (error) {
                 console.log("Email failed to send:", error);
             });
+            
+
     });
+
+    
+
+    howPopupMessage("Your form is successfully submitted ✔ ");
+    document.getElementById("contactForm").reset();
+            function showPopupMessage(message) {
+                // Display the popup message
+                var popupMessage = document.getElementById("popupMessage");
+                popupMessage.innerHTML = message;
+                popupMessage.style.display = "block";
+        
+                // Hide the popup after 2 seconds
+                setTimeout(function () {
+                    popupMessage.style.display = "none";
+                }, 1000);
+            }
+
 });
 
 
