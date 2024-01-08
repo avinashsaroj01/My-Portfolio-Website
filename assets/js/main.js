@@ -48,7 +48,6 @@ document.addEventListener("DOMContentLoaded", function () {
     contactForm.addEventListener("submit", function (event) {
         event.preventDefault();
 
-
         // Replace the following placeholders with your actual values
         const emailJsUserId = "k8gDO4DcnhhOxgoyL";
         const emailServiceId = "service_gms0bfe";
@@ -69,42 +68,46 @@ document.addEventListener("DOMContentLoaded", function () {
         emailjs.send(emailServiceId, templateId, data)
             .then(function (response) {
                 console.log("Email sent successfully:", response);
-            }, function (error) {
+
+                // Show the success popup message
+                showPopupMessage("Your Message is sent Successfully ✅");
+
+                // Reset the form
+                contactForm.reset();
+            })
+            .catch(function (error) {
                 console.log("Email failed to send:", error);
             });
-            
-
     });
+
+   function showPopupMessage(message) {
+    // Display the popup message
+    var popupMessage = document.getElementById("popupMessage");
+    popupMessage.innerHTML = message;
+
+    // Add the 'show' class to trigger the transition
+    popupMessage.classList.add('show');
+
+    // Hide the popup after 2 seconds
+    setTimeout(function () {
+        // Remove the 'show' class to hide the popup
+        popupMessage.classList.remove('show');
+    }, 2000);
+}
 
     
 
-    howPopupMessage("Your form is successfully submitted ✔ ");
-    document.getElementById("contactForm").reset();
-            function showPopupMessage(message) {
-                // Display the popup message
-                var popupMessage = document.getElementById("popupMessage");
-                popupMessage.innerHTML = message;
-                popupMessage.style.display = "block";
-        
-                // Hide the popup after 2 seconds
-                setTimeout(function () {
-                    popupMessage.style.display = "none";
-                }, 1000);
-            }
-
+  
 });
-
-
-
-
-/*===== SCROLL REVEAL ANIMATION =====*/
-const sr = ScrollReveal({
+  /*===== SCROLL REVEAL ANIMATION =====*/
+  const sr = ScrollReveal({
     origin: 'top',
     distance: '60px',
     duration: 2000,
     delay: 200,
     //     reset: true
 });
+
 
 sr.reveal('.home__data, .about__img, .skills__subtitle, .skills__text', {});
 sr.reveal('.home__img, .about__subtitle, .about__text, .skills__img', { delay: 400 });
