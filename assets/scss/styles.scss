@@ -2,17 +2,19 @@
 @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap');
 
 /*===== VARIABLES CSS =====*/
---header-height: 3rem;
+/*===== VARIABLES CSS =====*/
+:root {
+    --header-height: 3rem;
     --font-semi: 600;
 
-    /*===== Colores =====*/
+    /*===== Colors =====*/
     /*Purple 260 - Red 355 - Blue 224 - Pink 340*/
     /* HSL color mode */
     --hue-color: 224;
     --first-color: hsl(var(--hue-color), 89%, 60%);
     --second-color: hsl(var(--hue-color), 56%, 12%);
 
-    /*===== Fuente y tipografia =====*/
+    /*===== Fonts and Typography =====*/
     --body-font: 'Poppins', sans-serif;
 
     --big-font-size: 2rem;
@@ -20,22 +22,26 @@
     --normal-font-size: .938rem;
     --smaller-font-size: .75rem;
 
-    /*===== Margenes =====*/
+    /*===== Margins =====*/
     --mb-2: 1rem;
     --mb-4: 2rem;
     --mb-5: 2.5rem;
     --mb-6: 3rem;
 
-    /*===== z index =====*/
+    /*===== z-index =====*/
     --z-back: -10;
     --z-fixed: 100;
+}
 
-    @media screen and (min-width: 968px){
+@media screen and (min-width: 968px) {
+    :root {
         --big-font-size: 3.5rem;
         --h2-font-size: 2rem;
         --normal-font-size: 1rem;
         --smaller-font-size: .875rem;
+    }
 }
+
 
 /*===== BASE =====*/
 *,::before,::after{
@@ -100,15 +106,43 @@ img{
     margin-left: var(--mb-2);
     margin-right: var(--mb-2);
 }
-.l-header{
-    width: 100%;
-    position: fixed;
-    top: 0;
-    left: 0;
-    z-index: var(--z-fixed);
-    background-color: #fff;
-    box-shadow: 0 1px 4px rgba(146,161,176,.15);
+// .l-header{
+//     width: 100%;
+//     position: fixed;
+//     top: 0;
+//     left: 0;
+//     z-index: var(--z-fixed);
+//     background-color: #fff;
+//     box-shadow: 0 1px 4px rgba(146,161,176,.15);
+// }
+/* Style the header */
+.l-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1rem;
 }
+
+/* Style for the logo container */
+.logo {
+    display: flex;
+    align-items: center;
+}
+
+/* Style the logo icon */
+.logo-icon {
+    width: 50px; /* Adjust based on preferred size */
+    height: 50px; /* Adjust based on preferred size */
+    margin-right: 10px; /* Space between icon and text */
+}
+
+/* Style the logo text */
+.logo-text {
+    font-size: 1.5rem;
+    font-weight: bold;
+    color: #000; /* Adjust color as needed */
+}
+
 
 /*===== NAV =====*/
 .nav{
@@ -507,7 +541,6 @@ img{
         column-gap: 2rem;
     }
 }
-
 @media screen and (min-width: 992px){
     .bd-grid{
         margin-left: auto;
